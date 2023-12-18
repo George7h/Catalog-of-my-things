@@ -140,6 +140,11 @@ To run tests, run the following command:
 - Twitter: [@twitterhandle](https://twitter.com/DevKaranJ)
 - Linkdin: [@linkdinhandle](https://www.linkedin.com/in/devkaranj/)
 
+  👤 **Austin Obimbo**
+
+- GitHub: [Austin Obimbo](https://github.com/Obimbo07/)
+- WellFound: [AustinObimbo](https://wellfound.com/u/austin-obimbo)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
