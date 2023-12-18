@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Logo.jpg" alt="logo" width="140"  height="auto" />
+<img src="Logo.jpeg" alt="logo" width="140"  height="auto" />
   <br/>
 
 <h3><b>Catalog of my things</b></h3>
