@@ -144,6 +144,8 @@ To run tests, run the following command:
 
 - GitHub: [Austin Obimbo](https://github.com/Obimbo07/)
 - WellFound: [AustinObimbo](https://wellfound.com/u/austin-obimbo)
+-  Twitter:[Austine](https://twitter.com/austsine_)
+- LinkedIn: [Austin Obimbo](https://www.linkedin.com/in/austin-obimbo-9a613623a/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
