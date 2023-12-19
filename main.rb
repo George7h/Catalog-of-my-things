@@ -54,7 +54,6 @@ class Menu
   # rubocop:enable Metrics/CyclomaticComplexity
 end
 
-
 menu = Menu.new
 
 loop do
