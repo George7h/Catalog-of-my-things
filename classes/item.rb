@@ -8,6 +8,7 @@ class Item
     @id = Random.rand(1..1000)
     @genre = genre || {}
     @author = author || {}
+    @source = source || {}
     @label = label || {}
     @publish_date = publish_date
     @archived = false
@@ -20,6 +21,10 @@ end
 def author=(new_author)
   @author = new_author
 end
+
+def source=(new_source)
+  @source = new_source
+  end
 
 def label=(new_label)
   @label = new_label
