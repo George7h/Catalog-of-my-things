@@ -16,6 +16,8 @@ class Menu
     puts '13. Exit'
   end
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/CyclomaticComplexity
   def run_options(choice)
     case choice
     when 1
@@ -33,7 +35,7 @@ class Menu
     when 7
       list_all_authors
     when 8
-      list_all_authors
+      list_all_sources
     when 9
       add_book
     when 10
@@ -46,4 +48,6 @@ class Menu
       puts 'Invalid option.Please try again.'
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/CyclomaticComplexity
 end
