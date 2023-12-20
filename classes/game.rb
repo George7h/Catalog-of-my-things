@@ -1,3 +1,6 @@
+# game.rb
+require_relative 'item'
+
 class Game < Item
   attr_accessor :multiplayer, :last_played_at
 
@@ -5,5 +8,11 @@ class Game < Item
     super(genre, author, source, label, publish_date)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
+  end
+
+  def can_be_archived?
+    super &&
+      ((Time.now - @publish_date.to_time).to_i > 10 * 365 * 24 * 60 * 60) &&
+      ((Time.now - @last_played_at).to_i > 2 * 365 * 24 * 60 * 60)
   end
 end
