@@ -1,7 +1,7 @@
 require './classes/item'
 
 class Source < Item
-  attr_accessor :name,
+  attr_accessor :name
   attr_reader :id, :items
 
   def initialize(name, id = nil)
