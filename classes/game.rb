@@ -13,6 +13,12 @@ class Game < Item
   def can_be_archived?
     super &&
       ((Time.now - @publish_date.to_time).to_i > 10 * 365 * 24 * 60 * 60) &&
-      ((Time.now - @last_played_at).to_i > 2 * 365 * 24 * 60 * 60)
+      ((Time.now - @last_played_at.to_time).to_i > 2 * 365 * 24 * 60 * 60)
+  end
+
+  def self.all
+    # Return all instances of Game (you may need to maintain a collection)
+    # Replace this with your actual data retrieval logic
+    []
   end
 end

@@ -15,4 +15,20 @@ class Author
     @items << item
     item.author = self
   end
+
+  def full_name
+    "#{@first_name} #{@last_name}"
+  end
+
+  def self.all
+    # Return all instances of Author (you may need to maintain a collection)
+    # Replace this with your actual data retrieval logic
+    []
+  end
+
+  def self.find_by_full_name(full_name)
+    # Find and return an author by full name
+    # Replace this with your actual data retrieval logic
+    nil
+  end
 end

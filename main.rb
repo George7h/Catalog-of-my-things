@@ -1,3 +1,8 @@
+# main.rb
+require_relative 'classes/item'
+require_relative 'classes/author'
+require_relative 'classes/game'
+
 puts 'Welcome to your Catalog of things'
 
 class Menu
@@ -18,40 +23,74 @@ class Menu
     puts '13. Exit'
   end
 
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/CyclomaticComplexity
   def run_options(choice)
     case choice
     when 1
-      list_all_books
+      # Add your logic for listing books
     when 2
-      list_all_music_albums
+      # Add your logic for listing music albums
     when 3
-      list_all_movies
+      # Add your logic for listing movies
     when 4
       list_all_games
     when 5
-      list_all_genres
+      # Add your logic for listing genres
     when 6
-      list_all_labels
+      # Add your logic for listing labels
     when 7
       list_all_authors
     when 8
-      list_all_sources
+      # Add your logic for listing sources
     when 9
-      add_book
+      # Add your logic for adding a book
     when 10
-      add_music_album
+      # Add your logic for adding a music album
     when 11
-      add_movie
+      # Add your logic for adding a movie
     when 12
       add_game
     else
-      puts 'Invalid option.Please try again.'
+      puts 'Invalid option. Please try again.'
     end
   end
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/CyclomaticComplexity
+
+  def list_all_games
+    puts '===== List of Games ====='
+    Game.all.each do |game|
+      puts "#{game.id}. #{game.label} (Genre: #{game.genre}, Author: #{game.author.full_name})"
+    end
+  end
+
+  def list_all_authors
+    puts '===== List of Authors ====='
+    Author.all.each do |author|
+      puts "#{author.id}. #{author.full_name}"
+    end
+  end
+
+  def add_game
+    puts '===== Add a Game ====='
+    print 'Enter genre: '
+    genre = gets.chomp
+    print 'Enter author (full name): '
+    author_name = gets.chomp
+    author = Author.find_by_full_name(author_name) || Author.new(first_name: author_name.split.first, last_name: author_name.split.last)
+    print 'Enter source: '
+    source = gets.chomp
+    print 'Enter label: '
+    label = gets.chomp
+    print 'Enter publish date (YYYY-MM-DD): '
+    publish_date = gets.chomp
+    print 'Is it multiplayer? (true/false): '
+    multiplayer = gets.chomp.downcase == 'true'
+    print 'Enter last played date (YYYY-MM-DD): '
+    last_played_at = gets.chomp
+
+    game = Game.new(genre, author, source, label, publish_date, multiplayer, last_played_at)
+    game.move_to_archive if game.can_be_archived?
+
+    puts 'Game added successfully!'
+  end
 end
 
 menu = Menu.new
