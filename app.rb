@@ -60,6 +60,7 @@ class App
 
     book = Book.new(publisher, @cover_state, @publish_date)
     choose_label(book)
+    choose_author(book)
 
     @books << book
   end
