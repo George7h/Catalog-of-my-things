@@ -42,7 +42,7 @@ class Menu
       add_book
     when 10
       add_music_album
-    when 1113
+    when 11
       add_movie
     when 12
       add_game
