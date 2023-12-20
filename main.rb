@@ -26,31 +26,31 @@ class Menu
   def run_options(choice)
     case choice
     when 1
-      # Add your logic for listing books
+      list_all_books
     when 2
-      # Add your logic for listing music albums
+      list_all_music_albums
     when 3
-      # Add your logic for listing movies
+      list_all_movies
     when 4
       list_all_games
     when 5
-      # Add your logic for listing genres
+      list_all_genres
     when 6
-      # Add your logic for listing labels
+      list_all_labels
     when 7
       list_all_authors
     when 8
-      # Add your logic for listing sources
+      list_all_sources
     when 9
-      # Add your logic for adding a book
+      add_book
     when 10
-      # Add your logic for adding a music album
+      add_music_album
     when 11
-      # Add your logic for adding a movie
+      add_movie
     when 12
       add_game
     else
-      puts 'Invalid option. Please try again.'
+      puts 'Invalid option.Please try again.'
     end
   end
 
