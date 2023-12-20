@@ -1,4 +1,3 @@
-# spec/game_spec.rb
 require 'date'
 require_relative '../classes/game'
 
@@ -9,7 +8,7 @@ describe Game do
   let(:label) { 'Game Label' }
   let(:publish_date) { Date.new(2020, 1, 1) }
   let(:multiplayer) { true }
-  let(:last_played_at) { Time.now - 3 * 365 * 24 * 60 * 60 } # 3 years ago
+  let(:last_played_at) { Time.now - (3 * 365 * 24 * 60 * 60) }
 
   subject(:game) do
     Game.new(genre, author, source, label, publish_date, multiplayer, last_played_at)
@@ -28,7 +27,7 @@ describe Game do
         puts "last_played_at: #{game.last_played_at}"
         puts "Time.now: #{Time.now}"
         puts "(Time.now - game.last_played_at).to_i: #{(Time.now - game.last_played_at).to_i}"
-        puts "(2 * 365 * 24 * 60 * 60): #{(2 * 365 * 24 * 60 * 60)}"
+        puts "(2 * 365 * 24 * 60 * 60): #{2 * 365 * 24 * 60 * 60}"
 
         # Check the actual value of can_be_archived?
         result = game.can_be_archived?
