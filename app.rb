@@ -1,4 +1,3 @@
-
 require './classes/item'
 require './classes/book'
 require './classes/label'
@@ -6,7 +5,6 @@ require './classes/game'
 require './classes/source'
 require './classes/author'
 require './classes/movie'
-require './classes/source'
 
 class App
   def initialize
@@ -29,7 +27,7 @@ class App
       end
     end
   end
-  
+
   def list_all_movies
     if @movies.empty?
       puts 'No movies were found'
@@ -39,7 +37,7 @@ class App
       end
     end
   end
-  
+
   def list_all_sources
     if @sources.empty?
       puts 'No sources were found'
@@ -70,28 +68,28 @@ class App
     puts 'Enter Author: '
     author = gets.chomp.to_s
     puts 'Enter source: '
-  
+
     source_name = gets.chomp.to_s
     source = @sources.find { |s| s.name == source_name }
-  
+
     unless source
       source = Source.new(source_name)
       @sources << source
     end
-  
+
     puts 'Enter publish_date: '
     publish_date = gets.chomp.to_s
     print 'Is it silent? (true/false): '
     silent = gets.chomp.downcase == 'true'
-  
+
     movie = Movie.new(title, genre, author, source, publish_date, silent)
     source.add_item(movie)
-  
+
     @movies << movie
-  
+
     puts 'Movie added successfully!'
   end
-  
+
   def add_book
     puts 'Published by:'
     publisher = gets.chomp.to_s

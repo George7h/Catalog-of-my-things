@@ -3,7 +3,7 @@ require './classes/item'
 class Movie < Item
   attr_accessor :silent, :title
 
-  def initialize(title, genre, author, source, publish_date, silent, id = nil)
+  def initialize(title, genre, author, source, publish_date, silent, _id = nil)
     super(genre, author, source, nil, publish_date)
     @title = title
     @silent = silent

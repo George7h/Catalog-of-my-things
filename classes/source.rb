@@ -13,6 +13,6 @@ class Source < Item
 
   def add_item(item)
     @items << item
-    item.source = self.name
+    item.source = name
   end
 end
