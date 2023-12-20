@@ -1,4 +1,4 @@
-require_relative './classes/item'
+require './classes/item'
 
 class Movie < item
  attr_accessor :silent

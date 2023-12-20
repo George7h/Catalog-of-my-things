@@ -11,5 +11,6 @@ class Source < Item
 
     def add_item(item)
         @items << item
+        item.label = self
     end
 end
