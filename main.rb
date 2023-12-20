@@ -6,7 +6,6 @@ require_relative 'app'
 
 puts 'Welcome to your Catalog of things'
 
-
 class Menu
   def initialize(app)
     @app = app
