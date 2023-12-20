@@ -3,8 +3,8 @@ class Item
 
   def initialize(genre, author, source, label, publish_date)
     @id = Random.rand(1..1000)
+    self.author = author
     @genre = genre || {}
-    @author = author || {}
     @source = source || {}
     @label = label || {}
     @publish_date = publish_date
