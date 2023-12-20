@@ -54,7 +54,7 @@ class Menu
     end
   end
 
-# karan's code
+  # Karan's code
   def list_all_games
     puts '===== List of Games ====='
     Game.all.each do |game|

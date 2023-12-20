@@ -50,3 +50,17 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
+Style/ClassVars:
+  Enabled: false
+Style/KeywordParametersOrder:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+  IgnoredMethods:
+    - run_options
+
+Layout/LineLength:
+  Max: 150
+  IgnoredPatterns:
+    - '\|\| Author.new\('

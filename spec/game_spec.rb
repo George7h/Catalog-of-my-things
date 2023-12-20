@@ -4,8 +4,8 @@ require_relative '../classes/game'
 
 describe Game do
   let(:current_time) { Time.now }
-  let(:ten_years_ago) { current_time - 10 * 365 * 24 * 60 * 60 }
-  let(:two_years_ago) { current_time - 2 * 365 * 24 * 60 * 60 }
+  let(:ten_years_ago) { current_time - (10 * 365 * 24 * 60 * 60) }
+  let(:two_years_ago) { current_time - (2 * 365 * 24 * 60 * 60) }
 
   describe '#initialize' do
     it 'initializes a Game object with the provided attributes' do
@@ -30,7 +30,8 @@ describe Game do
 
     context 'when the game cannot be archived' do
       it 'returns false' do
-        game = Game.new('Adventure', 'Bob Johnson', 'Epic Games', 'Uncharted', '2022-01-01', false, two_years_ago.strftime('%F'))
+        game = Game.new('Adventure', 'Bob Johnson', 'Epic Games', 'Uncharted', '2022-01-01', false,
+                        two_years_ago.strftime('%F'))
         expect(game.can_be_archived?).to be false
       end
     end
