@@ -5,13 +5,18 @@ require_relative 'item'
 class Game < Item
   attr_accessor :multiplayer, :last_played_at
 
+  # Class variable to store all game instances
+  @@all_games = []
+
   def initialize(genre, author, source, label, publish_date, multiplayer, last_played_at)
     super(genre, author, source, label, publish_date)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
     @publish_date = Date.parse(publish_date)
-  end
 
+    # Add the new game instance to the collection
+    @@all_games << self
+  end
 
   def can_be_archived?
     super &&
@@ -20,6 +25,6 @@ class Game < Item
   end
 
   def self.all
-    []
+    @@all_games
   end
 end
