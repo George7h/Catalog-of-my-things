@@ -1,4 +1,4 @@
-require_relative 'app'
+require './app'
 
 class Menu
   def initialize(app)

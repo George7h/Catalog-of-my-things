@@ -5,7 +5,7 @@ require './classes/label'
 require './classes/game'
 require './classes/source'
 require './classes/author'
- require './classes/movie'
+require './classes/movie'
 require './classes/source'
 
 class App
@@ -25,7 +25,7 @@ class App
     else
       @books.each do |book|
         puts "ID: #{book.id}, Author: #{book.author.first_name}, Publisher: #{book.publisher},
-        Cover state: #{book.cover_
+        Cover state: #{book.cover_state}"
       end
     end
   end
