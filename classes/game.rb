@@ -1,3 +1,4 @@
+# game.rb
 require_relative 'item'
 
 class Game < Item
@@ -10,6 +11,8 @@ class Game < Item
   end
 
   def can_be_archived?
-    super && (Time.now - @last_played_at).to_i > 2 * 365 * 24 * 60 * 60
+    super &&
+      ((Time.now - @publish_date.to_time).to_i > 10 * 365 * 24 * 60 * 60) &&
+      ((Time.now - @last_played_at).to_i > 2 * 365 * 24 * 60 * 60)
   end
 end
