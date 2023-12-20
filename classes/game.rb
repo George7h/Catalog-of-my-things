@@ -1,4 +1,5 @@
 # game.rb
+require 'date'
 require_relative 'item'
 
 class Game < Item
@@ -8,17 +9,17 @@ class Game < Item
     super(genre, author, source, label, publish_date)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
+    @publish_date = Date.parse(publish_date)
   end
+
 
   def can_be_archived?
     super &&
       ((Time.now - @publish_date.to_time).to_i > 10 * 365 * 24 * 60 * 60) &&
-      ((Time.now - @last_played_at.to_time).to_i > 2 * 365 * 24 * 60 * 60)
+      ((Time.now - Date.parse(@last_played_at).to_time).to_i > 2 * 365 * 24 * 60 * 60)
   end
 
   def self.all
-    # Return all instances of Game (you may need to maintain a collection)
-    # Replace this with your actual data retrieval logic
     []
   end
 end
