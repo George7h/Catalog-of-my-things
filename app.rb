@@ -35,7 +35,7 @@ class App
       puts 'No movies were found'
     else
       @movies.each do |movie|
-        puts "ID: #{movie}"
+        puts "ID: #{movie.id}, Title: #{movie.title}, Genre: #{movie.genre}, Author: #{movie.author}, Source #{movie.source}"
       end
     end
   end
