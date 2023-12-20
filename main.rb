@@ -1,6 +1,10 @@
-puts 'Welcome to your Catalog of things'
+require_relative 'app'
 
 class Menu
+  def initialize(app)
+    @app = app
+  end
+
   def display_menu
     puts '===== Library Menu ====='
     puts '1. List all books'
@@ -23,38 +27,41 @@ class Menu
   def run_options(choice)
     case choice
     when 1
-      list_all_books
+      @app.list_all_books
     when 2
-      list_all_music_albums
+      @app.list_all_music_albums
     when 3
-      list_all_movies
+      @app.list_all_movies
     when 4
-      list_all_games
+      @app.list_all_games
     when 5
-      list_all_genres
+      @app.list_all_genres
     when 6
-      list_all_labels
+      @app.list_all_labels
     when 7
-      list_all_authors
+      @app.list_all_authors
     when 8
-      list_all_sources
+      @app.list_all_sources
     when 9
-      add_book
+      @app.add_book
     when 10
-      add_music_album
+      @app.add_music_album
     when 11
-      add_movie
+      @app.add_movie
     when 12
-      add_game
+      @app.add_game
     else
-      puts 'Invalid option.Please try again.'
+      puts 'Invalid option. Please try again.'
     end
   end
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/CyclomaticComplexity
 end
 
-menu = Menu.new
+app_instance = App.new
+menu = Menu.new(app_instance)
+
+puts 'Welcome to your Catalog of things'
 
 loop do
   menu.display_menu
