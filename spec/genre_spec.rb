@@ -1,16 +1,20 @@
-# spec/genre_spec.rb
-require './classes/genre'
-require './classes/item
+require 'date'
+require_relative '../classes/genre'
+require_relative '../classes/item'
 
-RSpec.describe Label do
-  describe 'add_item' do
-    it 'adds an item to the label' do
-      genre = Genre.new('Comedy')
-      item = Item.new(genre, 'Author1', 'Source1', 'Label1', Time.now)
+describe Genre do
+  let(:genre) { Genre.new('Non-Fiction') }
 
-      genre.add_item(item)
+  describe '#add_item' do
+    let(:item) { Item.new(genre, 'Author', 'Book', 'Book Label', Date.new(2022, 1, 1)) }
 
+    it 'should add the input item to the collection of items' do
+      expect { genre.add_item(item) }.to change { genre.items.count }.by(1)
       expect(genre.items).to include(item)
+    end
+
+    it 'should add self as a property of the item object' do
+      genre.add_item(item)
       expect(item.genre).to eq(genre)
     end
   end
