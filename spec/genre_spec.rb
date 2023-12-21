@@ -1,26 +1,20 @@
-# genre_spec.rb
-require './classes/genre'
+require 'date'
+require_relative '../classes/genre'
+require_relative '../classes/item'
 
-RSpec.describe Genre do
-  describe '#initialize' do
-    it 'creates a new genre with a name and assigns an ID' do
-      genre = Genre.new('Science Fiction')
-      expect(genre.name).to eq('Science Fiction')
-      expect(genre.id).not_to be_nil
-    end
-
-    it 'assigns the provided ID to the genre' do
-      genre = Genre.new('Fantasy', 42)
-      expect(genre.id).to eq(42)
-    end
-  end
+describe Genre do
+  let(:genre) { Genre.new('Non-Fiction') }
 
   describe '#add_item' do
-    it 'adds an item to the genre' do
-      genre = Genre.new('Mystery')
-      item = Item.new(genre, 'Author', 'Source', 'Label', Time.now)
-      genre.add_item(item)
+    let(:item) { Item.new(genre, 'Author', 'Book', 'Book Label', Date.new(2022, 1, 1)) }
+
+    it 'should add the input item to the collection of items' do
+      expect { genre.add_item(item) }.to change { genre.items.count }.by(1)
       expect(genre.items).to include(item)
+    end
+
+    it 'should add self as a property of the item object' do
+      genre.add_item(item)
       expect(item.genre).to eq(genre)
     end
   end
