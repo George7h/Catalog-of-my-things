@@ -1,11 +1,9 @@
-# game.rb
 require 'date'
 require_relative 'item'
 
 class Game < Item
   attr_accessor :multiplayer, :last_played_at
 
-  # Class variable to store all game instances
   @@all_games = []
 
   def initialize(genre, author, source, label, publish_date, multiplayer, last_played_at)
@@ -14,7 +12,6 @@ class Game < Item
     @last_played_at = last_played_at
     @publish_date = Date.parse(publish_date)
 
-    # Add the new game instance to the collection
     @@all_games << self
   end
 

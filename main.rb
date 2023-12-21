@@ -1,6 +1,5 @@
-# main.rb
-require_relative 'classes/item'
-require_relative 'app'
+require './app'
+
 
 puts 'Welcome to your Catalog of things'
 
@@ -35,13 +34,13 @@ class Menu
     when 3
       @app.list_all_movies
     when 4
-      @app.list_all_games
+      list_all_games
     when 5
       @app.list_all_genres
     when 6
       @app.list_all_labels
     when 7
-      @app.list_all_authors
+      list_all_authors
     when 8
       @app.list_all_sources
     when 9
@@ -51,7 +50,7 @@ class Menu
     when 11
       @app.add_movie
     when 12
-      @app.add_game
+      add_game
     else
       puts 'Invalid option. Please try again.'
     end

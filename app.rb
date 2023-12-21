@@ -1,10 +1,11 @@
 # app.rb
-require_relative './classes/item'
-require_relative './classes/book'
-require_relative './classes/label'
-require_relative './classes/game'
-require_relative './classes/source'
-require_relative './classes/author'
+require './classes/item'
+require './classes/book'
+require './classes/label'
+require './classes/game'
+require './classes/source'
+require './classes/author'
+require './classes/movie'
 
 class App
   def initialize
@@ -12,6 +13,8 @@ class App
     @labels = []
     @authors = []
     @games = []
+    @movies = []
+    @sources = []
   end
 
   # list methods
@@ -23,6 +26,26 @@ class App
       @books.each do |book|
         puts "ID: #{book.id}, Author: #{book.author.full_name}, Publisher: #{book.publisher},
         Cover state: #{book.cover_state}"
+      end
+    end
+  end
+
+  def list_all_movies
+    if @movies.empty?
+      puts 'No movies were found'
+    else
+      @movies.each do |movie|
+        puts "ID: #{movie.id}, Genre: #{movie.genre}, Author: #{movie.author}, Source: #{movie.source}, Date-Published: #{movie.publish_date}"
+      end
+    end
+  end
+
+  def list_all_sources
+    if @sources.empty?
+      puts 'No sources were found'
+    else
+      @sources.each do |source|
+        puts "ID: #{source.id}, Source: #{source.name}"
       end
     end
   end
@@ -61,6 +84,37 @@ class App
   end
 
   # add methods
+  def add_movie
+    # puts 'Enter Label: '
+    # label = gets.chomp.to_s
+    puts 'Enter genre: '
+    genre = gets.chomp.to_s
+    puts 'Enter Author: '
+    author = gets.chomp.to_s
+    puts 'Enter source: '
+
+    source_name = gets.chomp.to_s
+    source = @sources.find { |s| s.name == source_name }
+
+    unless source
+      source = Source.new(source_name)
+      @sources << source
+    end
+    puts 'Enter publish_date (YYYY-MM-DD): '
+    publish_date_str = gets.chomp.to_s
+    publish_date = Date.parse(publish_date_str)
+
+    print 'Is it silent? (true/false): '
+    silent = gets.chomp.downcase == 'true'
+    movie = Movie.new(genre, author, source, publish_date, silent)
+    choose_label(movie)
+    source.add_item(movie)
+
+    @movies << movie
+
+    puts 'Movie added successfully!'
+  end
+
   def add_book
     puts 'Published by:'
     publisher = gets.chomp.to_s
