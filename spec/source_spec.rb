@@ -1,4 +1,5 @@
 require './classes/source'
+require './classes/movie'
 
 RSpec.describe Source do
   describe '#initialize' do
@@ -11,8 +12,8 @@ RSpec.describe Source do
 
   describe '#add_item' do
     it 'adds an item to the source' do
-      source = Source.new('Library', 1)
-      movie = Movie.new('Inception', 'Sci-Fi', 'Christopher Nolan', 'Hollywood', '2023-01-01', false, 1)
+      source = Source.new('Library')
+      movie = Movie.new('Inception', 'Sci-Fi', 'Christopher Nolan', 'Hollywood', Date.parse('2023-01-01'), false)
 
       source.add_item(movie)
 
