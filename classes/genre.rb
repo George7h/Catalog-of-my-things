@@ -13,6 +13,6 @@ class Genre < Item
 
   def add_item(item)
     @items << item
-    item.label = self
+    item.name = self
   end
 end
