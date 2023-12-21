@@ -1,7 +1,5 @@
 # main.rb
 require_relative 'classes/item'
-require_relative 'classes/author'
-require_relative 'classes/game'
 require_relative 'app'
 
 puts 'Welcome to your Catalog of things'
@@ -58,47 +56,7 @@ class Menu
       puts 'Invalid option. Please try again.'
     end
   end
-
-  # Karan's code
-  def list_all_games
-    puts '===== List of Games ====='
-    Game.all.each do |game|
-      puts "#{game.id}. #{game.label} (Genre: #{game.genre}, Author: #{game.author.full_name})"
-    end
-  end
-
-  def list_all_authors
-    puts '===== List of Authors ====='
-    Author.all.each do |author|
-      puts "#{author.id}. #{author.full_name}"
-    end
-  end
-
-  def add_game
-    puts '===== Add a Game ====='
-    print 'Enter genre: '
-    genre = gets.chomp
-    print 'Enter author (full name): '
-    author_name = gets.chomp
-    author = Author.find_by_full_name(author_name) || Author.new(first_name: author_name.split.first, last_name: author_name.split.last)
-    print 'Enter source: '
-    source = gets.chomp
-    print 'Enter label: '
-    label = gets.chomp
-    print 'Enter publish date (YYYY-MM-DD): '
-    publish_date = gets.chomp
-    print 'Is it multiplayer? (true/false): '
-    multiplayer = gets.chomp.downcase == 'true'
-    print 'Enter last played date (YYYY-MM-DD): '
-    last_played_at = gets.chomp
-
-    game = Game.new(genre, author, source, label, publish_date, multiplayer, last_played_at)
-    game.move_to_archive if game.can_be_archived?
-
-    puts 'Game added successfully!'
-  end
 end
-# karan's code ends
 
 app_instance = App.new
 menu = Menu.new(app_instance)
