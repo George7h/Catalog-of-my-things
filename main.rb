@@ -1,6 +1,5 @@
 require './app'
 
-
 puts 'Welcome to your Catalog of things'
 
 class Menu
