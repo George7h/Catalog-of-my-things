@@ -59,7 +59,7 @@ class App
       end
     end
   end
-  
+
   # add methods
   def add_book
     puts 'Published by:'
@@ -95,7 +95,10 @@ class App
     genre = gets.chomp
     print 'Enter author (full name): '
     author_name = gets.chomp
-    author = Author.find_by_full_name(author_name) || Author.new(first_name: author_name.split.first, last_name: author_name.split.last)
+
+    # Modified code: Find or create the author based on full name
+    author = find_or_create_author(author_name)
+
     print 'Enter source: '
     source = gets.chomp
     print 'Enter label: '
@@ -116,6 +119,19 @@ class App
   end
 
   private
+
+ # Modified code: Method to find or create an author based on full name
+ def find_or_create_author(full_name)
+  first_name, last_name = full_name.split
+  author = @authors.find { |a| a.first_name == first_name && a.last_name == last_name }
+
+  unless author
+    author = Author.new(first_name: first_name, last_name: last_name)
+    @authors << author
+  end
+
+  author
+end
 
   def choose_label(item)
     puts 'Label title:'
