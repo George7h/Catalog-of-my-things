@@ -7,6 +7,7 @@ require './classes/source'
 require './classes/author'
 require './classes/movie'
 
+# rubocop:disable Metrics/ClassLength
 class App
   def initialize
     @books = []
@@ -172,20 +173,22 @@ class App
     puts 'Game added successfully!'
   end
 
+  # rubocop:enable Metrics/ClassLength
+
   private
 
- # Modified code: Method to find or create an author based on full name
- def find_or_create_author(full_name)
-  first_name, last_name = full_name.split
-  author = @authors.find { |a| a.first_name == first_name && a.last_name == last_name }
+  # Modified code: Method to find or create an author based on full name
+  def find_or_create_author(full_name)
+    first_name, last_name = full_name.split
+    author = @authors.find { |a| a.first_name == first_name && a.last_name == last_name }
 
-  unless author
-    author = Author.new(first_name: first_name, last_name: last_name)
-    @authors << author
+    unless author
+      author = Author.new(first_name: first_name, last_name: last_name)
+      @authors << author
+    end
+
+    author
   end
-
-  author
-end
 
   def choose_label(item)
     puts 'Label title:'
