@@ -1,4 +1,3 @@
-# game.rb
 require 'date'
 require_relative 'item'
 
