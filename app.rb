@@ -33,7 +33,7 @@ class App
       puts 'No movies were found'
     else
       @movies.each do |movie|
-        puts "ID: #{movie.id}, Title: #{movie.title}, Genre: #{movie.genre}, Author: #{movie.author}, Source #{movie.source}"
+        puts "ID: #{movie.id}, Genre: #{movie.genre}, Author: #{movie.author}, Source: #{movie.source}, Date-Published: #{movie.publish_date}"
       end
     end
   end
@@ -61,8 +61,8 @@ class App
 
   # add methods
   def add_movie
-    puts 'Enter Title: '
-    title = gets.chomp.to_s
+    # puts 'Enter Label: '
+    # label = gets.chomp.to_s
     puts 'Enter genre: '
     genre = gets.chomp.to_s
     puts 'Enter Author: '
@@ -76,13 +76,14 @@ class App
       source = Source.new(source_name)
       @sources << source
     end
+    puts 'Enter publish_date (YYYY-MM-DD): '
+    publish_date_str = gets.chomp.to_s
+    publish_date = Date.parse(publish_date_str)
 
-    puts 'Enter publish_date: '
-    publish_date = gets.chomp.to_s
     print 'Is it silent? (true/false): '
     silent = gets.chomp.downcase == 'true'
-
-    movie = Movie.new(title, genre, author, source, publish_date, silent)
+    movie = Movie.new(genre, author, source, publish_date, silent)
+    choose_label(movie)
     source.add_item(movie)
 
     @movies << movie
