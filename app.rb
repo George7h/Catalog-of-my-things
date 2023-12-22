@@ -9,7 +9,6 @@ require './classes/genre'
 require './classes/musicalbum'
 require 'json'
 
-
 class Saveload
   def load_data(filename)
     if File.exist?(filename)
