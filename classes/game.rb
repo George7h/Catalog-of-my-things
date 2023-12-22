@@ -4,15 +4,28 @@ require_relative 'item'
 class Game < Item
   attr_accessor :multiplayer, :last_played_at
 
-  @@all_games = []
+  # Class variable to store all game instances
 
-  def initialize(genre, author, source, label, publish_date, multiplayer, last_played_at)
-    super(genre, author, source, label, publish_date)
+  def initialize(publish_date, multiplayer, last_played_at)
+    super(nil, nil, multiplayer, last_played_at, publish_date)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
     @publish_date = Date.parse(publish_date)
+  end
 
-    @@all_games << self
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'id' => @id,
+      'genre' => @genre,
+      'author' => @author,
+      'source' => @source,
+      'label' => @label,
+      'publish_date' => @publish_date,
+      'archived' => @archived,
+      'multiplayer' => @multiplayer,
+      'last_played_at' => @last_played_at
+    }.to_json(*args)
   end
 
   def can_be_archived?

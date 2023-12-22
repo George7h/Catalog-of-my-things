@@ -203,7 +203,13 @@ class App
     print 'Enter last played date (YYYY-MM-DD): '
     last_played_at = gets.chomp
 
-    game = Game.new(genre, author, source, label, publish_date, multiplayer, last_played_at)
+    # Modified code: Create a new Game object with the correct parameters
+    game = Game.new(publish_date, multiplayer, last_played_at)
+    game.genre = genre
+    game.author = author
+    game.source = source
+    game.label = label
+
     game.move_to_archive if game.can_be_archived?
 
     @games << game
