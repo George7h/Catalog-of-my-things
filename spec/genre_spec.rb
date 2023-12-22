@@ -1,21 +1,24 @@
-require 'date'
-require_relative '../classes/genre'
-require_relative '../classes/item'
+require './classes/genre'
+require './classes/musicalbum'
 
-describe Genre do
-  let(:genre) { Genre.new('Non-Fiction') }
+RSpec.describe Genre do
+  describe '#initialize' do
+    it 'creates a new source with the given attributes' do
+      genre = Genre.new('Action', 1)
+      expect(genre.name).to eq('Action')
+      expect(genre.id).to eq(1)
+    end
+  end
 
   describe '#add_item' do
-    let(:item) { Item.new(genre, 'Author', 'Book', 'Book Label', Date.new(2022, 1, 1)) }
+    it 'adds an item to the genre' do
+      genre = Genre.new('Comedy')
+      musicalbum = MusicAlbum.new('Thriller', 'Author1', 'Source1', 'Label1', Time.now, true)
 
-    it 'should add the input item to the collection of items' do
-      expect { genre.add_item(item) }.to change { genre.items.count }.by(1)
-      expect(genre.items).to include(item)
-    end
+      genre.add_item(musicalbum)
 
-    it 'should add self as a property of the item object' do
-      genre.add_item(item)
-      expect(item.genre).to eq(genre)
+      expect(genre.items).to include(musicalbum)
+      expect(musicalbum.genre.name).to eq('Comedy')
     end
   end
 end
