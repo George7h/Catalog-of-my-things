@@ -6,17 +6,38 @@ require './classes/game'
 require './classes/source'
 require './classes/author'
 require './classes/movie'
+require 'json'
+class Saveload
+  def load_data(filename)
+    if File.exist?(filename)
+      file = File.read(filename)
+      JSON.parse(file)
+    else
+      puts "File #{filename} does not exist."
+      File.write(filename, '[]')
+      []
+    end
+  end
+
+  def save_data(filename, data)
+    File.write(filename, JSON.pretty_generate(data))
+  end
+end
 
 # rubocop:disable Metrics/ClassLength
+# rubocop:disable Metrics/PerceivedComplexity
 class App
   def initialize
-    @books = []
-    @labels = []
-    @authors = []
-    @games = []
-    @movies = []
-    @sources = []
+    @books = Saveload.new.load_data('data/books.json') || []
+    @labels = Saveload.new.load_data('data/labels.json') || []
+    @authors = Saveload.new.load_data('data/authors.json') || []
+    @movies = Saveload.new.load_data('data/movies.json') || []
+    @sources = Saveload.new.load_data('data/sources.json') || []
+    @genres = Saveload.new.load_data('data/genres.json') || []
+    @games = Saveload.new.load_data('data/games.json') || []
+    @music_albums = Saveload.new.load_data('data/music_albums.json') || []
   end
+  # rubocop:enable Metrics/PerceivedComplexity
 
   # list methods
   def list_all_books
@@ -52,12 +73,13 @@ class App
   end
 
   def list_all_labels
+    @labels = Saveload.new.load_data('data/labels.json')
     puts "\nListing all labels:"
     if @labels.empty?
       puts 'No labels found.'
     else
       @labels.each do |label|
-        puts "Title: #{label.title}, Color: #{label.color}"
+        puts "Title: #{label['title']}, Color: #{label['color']}"
       end
     end
   end
@@ -137,11 +159,26 @@ class App
       puts 'Invalid date format. Please try again.'
     end
 
-    book = Book.new(publisher, @cover_state, @publish_date)
+    book = Book.new(
+      publisher,
+      @cover_state,
+      @publish_date
+    )
+    choose_genre(book)
     choose_label(book)
     choose_author(book)
+    choose_source(book)
 
     @books << book
+
+    # Save each chosen element to JSON files
+
+    json = Saveload.new
+    json.save_data('data/books.json', @books)
+    json.save_data('data/genres.json', @genres)
+    json.save_data('data/labels.json', @labels)
+    json.save_data('data/authors.json', @authors)
+    json.save_data('data/sources.json', @sources)
   end
 
   def add_game
@@ -195,8 +232,11 @@ class App
     title = gets.chomp.to_s
     puts 'Label color:'
     color = gets.chomp.to_s
-    label = @labels.find { |l| l.title == title } || Label.new(title, color)
-    @labels << label unless @labels.include?(label)
+
+    label_hash = { 'id' => Random.rand(1..1000), 'title' => title, 'color' => color }
+
+    label = @labels.find { |l| l['title'] == title } || label_hash
+    @labels << label_hash unless @labels.include?(label_hash)
     item.label = label
   end
 
