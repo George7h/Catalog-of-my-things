@@ -53,21 +53,28 @@ class App
   end
 
   def list_all_movies
+    @movies = Saveload.new.load_data('data/movies.json')
+    puts "\nListing all movies:"
     if @movies.empty?
       puts 'No movies were found'
     else
       @movies.each do |movie|
-        puts "ID: #{movie.id}, Genre: #{movie.genre}, Author: #{movie.author}, Source: #{movie.source}, Date-Published: #{movie.publish_date}"
+        puts "ID: #{movie['id']},
+        Label: #{movie['label']['title']},
+        Genre: #{movie['genre']['name']},
+        Author: #{movie['author']['first_name']} #{movie['author']['last_name']},
+        Source: #{movie['source']['name']}"
       end
     end
   end
 
   def list_all_sources
+    @sources = Saveload.new.load_data('data/sources.json')
     if @sources.empty?
       puts 'No sources were found'
     else
       @sources.each do |source|
-        puts "ID: #{source.id}, Source: #{source.name}"
+        puts "ID: #{source['id']}, Source: #{source['name']}"
       end
     end
   end
@@ -108,32 +115,26 @@ class App
 
   # add methods
   def add_movie
-    # puts 'Enter Label: '
-    # label = gets.chomp.to_s
-    puts 'Enter genre: '
-    genre = gets.chomp.to_s
-    puts 'Enter Author: '
-    author = gets.chomp.to_s
-    puts 'Enter source: '
-
-    source_name = gets.chomp.to_s
-    source = @sources.find { |s| s.name == source_name }
-
-    unless source
-      source = Source.new(source_name)
-      @sources << source
-    end
-    puts 'Enter publish_date (YYYY-MM-DD): '
-    publish_date_str = gets.chomp.to_s
-    publish_date = Date.parse(publish_date_str)
-
+    puts 'Enter publish_date: '
+    publish_date = gets.chomp.to_s
     print 'Is it silent? (true/false): '
     silent = gets.chomp.downcase == 'true'
-    movie = Movie.new(genre, author, source, publish_date, silent)
+
+    movie = Movie.new(publish_date, silent)
+    choose_author(movie)
+    choose_genre(movie)
+    choose_source(movie)
     choose_label(movie)
-    source.add_item(movie)
 
     @movies << movie
+    # Save each chosen element to JSON files
+
+    json = Saveload.new
+    json.save_data('data/movies.json', @movies)
+    json.save_data('data/authors.json', @authors)
+    json.save_data('data/genres.json', @genres)
+    json.save_data('data/sources.json', @sources)
+    json.save_data('data/labels.json', @labels)
 
     puts 'Movie added successfully!'
   end
