@@ -17,7 +17,7 @@
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [🚀 Live Demo ](#-live-demo-)
-  - [🚀 Presentation ](#-presentation-)
+  - [🎥 Live Presentation ](#-live-presentation-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -74,7 +74,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## 🚀 Live Presentation <a name="presentation"></a>
+## 🎥 Live Presentation <a name="live-presentation"></a>
 
 - [Presentation](https://drive.google.com/file/d/1ABEhMnYWMxh2e3631bI7XedAYCIsHYwf/view?usp=drive_link)
 
