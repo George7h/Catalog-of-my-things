@@ -116,7 +116,6 @@ To run tests, run the following command:
 ```sh
   rspec ./spec
 ```
---->
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
