@@ -3,8 +3,8 @@ require './classes/item'
 class MusicAlbum < Item
   attr_accessor :on_spotify
 
-  def initialize(genre, author, source, label, publish_date, on_spotify)
-    super(genre, author, source, label, publish_date)
+  def initialize(publish_date, on_spotify)
+    super(nil, nil, nil, nil, publish_date)
     @on_spotify = on_spotify
   end
 
