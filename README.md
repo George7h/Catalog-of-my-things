@@ -17,6 +17,7 @@
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [🚀 Live Demo ](#-live-demo-)
+  - [🚀 Presentation ](#-presentation-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -71,6 +72,15 @@
 - [Live Demo Link](Comming Soon!)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## 🚀 Live Presentation <a name="presentation"></a>
+
+- [Presentation](https://drive.google.com/file/d/1ABEhMnYWMxh2e3631bI7XedAYCIsHYwf/view?usp=drive_link)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 <!-- GETTING STARTED -->
 
@@ -141,10 +151,9 @@ To run tests, run the following command:
 
   👤 **Austin Obimbo**
 
-- GitHub: [Austin Obimbo](https://github.com/Obimbo07/)
-- WellFound: [AustinObimbo](https://wellfound.com/u/austin-obimbo)
--  Twitter:[Austine](https://twitter.com/austsine_)
-- LinkedIn: [Austin Obimbo](https://www.linkedin.com/in/austin-obimbo-9a613623a/)
+- GitHub: [GitHub](https://github.com/Obimbo07/)
+- WellFound: [WellFound](https://wellfound.com/u/austin-obimbo)
+- LinkedIn: [Linkedin](https://www.linkedin.com/in/austin-obimbo-9a613623a/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
