@@ -50,3 +50,22 @@ CREATE TABLE games (
   last_played_at DATE,
   FOREIGN KEY (author_id) REFERENCES authors(id)
 );
+
+-- MusicAlbum Table
+CREATE TABLE musicalbum (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  item_id INT,
+  on_spotify BOOLEAN,
+  FOREIGN KEY (item_id) REFERENCES items(id),
+  PRIMARY KEY(id)
+);
+
+-- Genre Table
+CREATE TABLE genre (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(255) NOT NULL,
+  item_id INT,
+  items TEXT[],
+  Foreign Key (item_id) REFERENCES (items_id)
+  PRIMARY KEY (id)
+);
