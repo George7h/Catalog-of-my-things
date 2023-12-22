@@ -59,8 +59,6 @@ end
 app_instance = App.new
 menu = Menu.new(app_instance)
 
-puts 'Welcome to your Catalog of things'
-
 loop do
   menu.display_menu
   print 'Enter your choice (1 - 13): '
