@@ -11,7 +11,7 @@ class MusicAlbum < Item
   def on_spotify?
     @on_spotify == true
   end
-​
+
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
