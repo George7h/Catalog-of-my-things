@@ -27,8 +27,6 @@ class Saveload
   end
 end
 
-# rubocop:disable Metrics/ClassLength
-# rubocop:disable Metrics/PerceivedComplexity
 class App
   def initialize
     @books = Saveload.new.load_data('data/books.json') || []
@@ -40,7 +38,6 @@ class App
     @games = Saveload.new.load_data('data/games.json') || []
     @music_albums = Saveload.new.load_data('data/music_albums.json') || []
   end
-  # rubocop:enable Metrics/PerceivedComplexity
 
   def save_json_data
     Saveload.new.save_data('filepath', data)
@@ -278,7 +275,6 @@ class App
     puts 'Music album added successfully!'
   end
 end
-  # rubocop:enable Metrics/ClassLength
 
   private
 

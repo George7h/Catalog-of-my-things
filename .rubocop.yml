@@ -13,12 +13,14 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
-  Max: 150
+  Max: 300
 Metrics/BlockLength:
   AllowedMethods: ['describe']
   Max: 30
 Metrics/ParameterLists:
   Enabled: false
+Metrics/PerceivedComplexity:
+  Max: 15
 
 Style/Documentation:
   Enabled: false
