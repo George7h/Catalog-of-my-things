@@ -8,6 +8,24 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
   end
 
+  def on_spotify?
+    @on_spotify == true
+  end
+​
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'id' => @id,
+      'genre' => @genre,
+      'author' => @author,
+      'source' => @source,
+      'label' => @label,
+      'publish_date' => @publish_date,
+      'archived' => @archived,
+      'on_spotify' => @on_spotify
+    }.to_json(*args)
+  end
+
   def can_be_archived?
     super || @on_spotify
   end
