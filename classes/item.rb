@@ -23,4 +23,17 @@ class Item
       puts "Item #{@id} cannot be archived"
     end
   end
+
+  def to_json(*args)
+    {
+      'type' => self.class.name,
+      'id' => @id,
+      'genre' => @genre,
+      'author' => @author,
+      'source' => @source,
+      'label' => @label,
+      'publish_date' => @publish_date,
+      'archived' => @archived
+    }.to_json(*args)
+  end
 end
