@@ -5,8 +5,8 @@ class Genre < Item
   attr_reader :id, :items
 
   def initialize(name, id = nil)
-    super
-    @id = id || Random.random(1..1000)
+    super(name, author, source, label, publish_date)
+    @id = id || Random.rand(1..1000)
     @name = name
     @items = []
   end
