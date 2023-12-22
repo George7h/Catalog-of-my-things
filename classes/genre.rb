@@ -1,16 +1,14 @@
 require './classes/item'
 
-class Genre < Item
+class Genre
   attr_accessor :name
   attr_reader :id, :items
 
   def initialize(name, id = nil)
-    super(name, author, source, label, publish_date)
     @id = id || Random.rand(1..1000)
     @name = name
     @items = []
   end
-
 
   def to_json(*args)
     {

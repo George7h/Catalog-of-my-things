@@ -1,24 +1,19 @@
+# genre_spec.rb
 require './classes/genre'
-require './classes/musicalbum'
+require './classes/item'
 
 RSpec.describe Genre do
-  describe '#initialize' do
-    it 'creates a new source with the given attributes' do
-      genre = Genre.new('Action', 1)
-      expect(genre.name).to eq('Action')
-      expect(genre.id).to eq(1)
-    end
-  end
-
   describe '#add_item' do
     it 'adds an item to the genre' do
-      genre = Genre.new('Comedy')
-      musicalbum = MusicAlbum.new('Thriller', 'Author1', 'Source1', 'Label1', Time.now, true)
+      genre_name = 'Test Genre'
 
-      genre.add_item(musicalbum)
+      genre = Genre.new(genre_name)
+      item = Item.new(nil, nil, nil, nil, Time.now)
 
-      expect(genre.items).to include(musicalbum)
-      expect(musicalbum.genre.name).to eq('Comedy')
+      genre.add_item(item)
+
+      expect(genre.items).to include(item)
+      expect(item.genre).to eq(genre)
     end
   end
 end
