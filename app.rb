@@ -1,3 +1,4 @@
+# app.rb
 require './classes/item'
 require './classes/book'
 require './classes/label'
@@ -6,11 +7,13 @@ require './classes/source'
 require './classes/author'
 require './classes/movie'
 
+# rubocop:disable Metrics/ClassLength
 class App
   def initialize
     @books = []
     @labels = []
     @authors = []
+    @games = []
     @movies = []
     @sources = []
   end
@@ -22,7 +25,7 @@ class App
       puts 'No books found.'
     else
       @books.each do |book|
-        puts "ID: #{book.id}, Author: #{book.author.first_name}, Publisher: #{book.publisher},
+        puts "ID: #{book.id}, Author: #{book.author.full_name}, Publisher: #{book.publisher},
         Cover state: #{book.cover_state}"
       end
     end
@@ -55,6 +58,28 @@ class App
     else
       @labels.each do |label|
         puts "Title: #{label.title}, Color: #{label.color}"
+      end
+    end
+  end
+
+  def list_all_games
+    puts "\nListing all games:"
+    if @games.empty?
+      puts 'No games found.'
+    else
+      @games.each do |game|
+        puts "#{game.id}. #{game.label} (Genre: #{game.genre}, Author: #{game.author.full_name})"
+      end
+    end
+  end
+
+  def list_all_authors
+    puts "\nListing all authors:"
+    if @authors.empty?
+      puts 'No authors found.'
+    else
+      @authors.each do |author|
+        puts "ID: #{author.id}, Full Name: #{author.full_name}, Items Count: #{author.items.count}"
       end
     end
   end
@@ -119,7 +144,51 @@ class App
     @books << book
   end
 
+  def add_game
+    puts '===== Add a Game ====='
+    print 'Enter genre: '
+    genre = gets.chomp
+    print 'Enter author (full name): '
+    author_name = gets.chomp
+
+    # Modified code: Find or create the author based on full name
+    author = find_or_create_author(author_name)
+
+    print 'Enter source: '
+    source = gets.chomp
+    print 'Enter label: '
+    label = gets.chomp
+    print 'Enter publish date (YYYY-MM-DD): '
+    publish_date = gets.chomp
+    print 'Is it multiplayer? (true/false): '
+    multiplayer = gets.chomp.downcase == 'true'
+    print 'Enter last played date (YYYY-MM-DD): '
+    last_played_at = gets.chomp
+
+    game = Game.new(genre, author, source, label, publish_date, multiplayer, last_played_at)
+    game.move_to_archive if game.can_be_archived?
+
+    @games << game
+
+    puts 'Game added successfully!'
+  end
+
+  # rubocop:enable Metrics/ClassLength
+
   private
+
+  # Modified code: Method to find or create an author based on full name
+  def find_or_create_author(full_name)
+    first_name, last_name = full_name.split
+    author = @authors.find { |a| a.first_name == first_name && a.last_name == last_name }
+
+    unless author
+      author = Author.new(first_name: first_name, last_name: last_name)
+      @authors << author
+    end
+
+    author
+  end
 
   def choose_label(item)
     puts 'Label title:'
