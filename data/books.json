@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "json_class": "Book",
+    "id": 620,
+    "genre": {
+      "id": 504,
+      "name": "ddjd"
+    },
+    "author": {
+      "id": 384,
+      "first_name": "Austin",
+      "last_name": "Obimbo"
+    },
+    "source": {
+      "id": 110,
+      "name": "FFF"
+    },
+    "label": {
+      "id": 593,
+      "title": "fbf",
+      "color": "hghg"
+    },
+    "publish_date": "2020-10-12",
+    "archived": true,
+    "publisher": "ood",
+    "cover_state": "bad"
+  }
+]

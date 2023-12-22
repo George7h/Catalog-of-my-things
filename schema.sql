@@ -69,3 +69,20 @@ CREATE TABLE genre (
   Foreign Key (item_id) REFERENCES (items_id)
   PRIMARY KEY (id)
 );
+
+--Movies Table
+
+CREATE TABLE movies (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  genre_id TEXT,
+  author_id  INTEGER,
+  source TEXT,
+  label_id TEXT,
+  publish_date DATE,
+  archived BOOLEAN,
+  silent BOOLEAN,
+  PRIMARY KEY (id)
+  FOREIGN KEY (label_id) REFERENCES labels(id),
+  FOREIGN KEY (genre_id) REFERENCES genre(id)
+  FOREIGN KEY (author_id) REFERENCES authors(id)
+)
