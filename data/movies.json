@@ -1,0 +1,27 @@
+[
+  {
+    "json_class": "Movie",
+    "id": 159,
+    "genre": {
+      "id": 858,
+      "name": "Movie"
+    },
+    "author": {
+      "id": 384,
+      "first_name": "Austin",
+      "last_name": "Obimbo"
+    },
+    "source": {
+      "id": 493,
+      "name": "Netflix"
+    },
+    "label": {
+      "id": 563,
+      "title": "GGG",
+      "color": "HHH"
+    },
+    "publish_date": "2020-10-11",
+    "archived": false,
+    "silent": false
+  }
+]
