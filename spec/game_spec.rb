@@ -1,4 +1,4 @@
-require_relative './classes/game'
+require './classes/game'
 
 describe Game do
   let(:publish_date) { '2010-01-01' }
