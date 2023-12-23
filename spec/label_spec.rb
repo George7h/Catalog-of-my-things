@@ -1,4 +1,3 @@
-# spec/label_spec.rb
 require './classes/label'
 require './classes/item'
 

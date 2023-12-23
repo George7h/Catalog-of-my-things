@@ -1,4 +1,3 @@
-# source_spec.rb
 require './classes/source'
 require './classes/item'
 

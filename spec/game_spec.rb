@@ -1,7 +1,4 @@
-# spec/game_spec.rb
-
-require 'rspec'
-require_relative '../classes/game'
+require_relative './classes/game'
 
 describe Game do
   let(:publish_date) { '2010-01-01' }

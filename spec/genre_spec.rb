@@ -1,4 +1,3 @@
-# genre_spec.rb
 require './classes/genre'
 require './classes/item'
 

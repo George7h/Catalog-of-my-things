@@ -1,4 +1,3 @@
-# spec/book_spec.rb
 require './classes/book'
 require './classes/item'
 

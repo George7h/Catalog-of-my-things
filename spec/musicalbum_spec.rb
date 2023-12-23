@@ -1,4 +1,3 @@
-# music_album_spec.rb
 require './classes/musicalbum'
 
 RSpec.describe MusicAlbum do
